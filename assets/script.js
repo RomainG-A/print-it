@@ -17,25 +17,36 @@ const slides = [
 	}
 ]
 
-// Ajout des évènements sur les flèches
-const arrowLeft = document.querySelector('.arrow_left');
-const arrowRight = document.querySelector('.arrow_right');
 
-arrowLeft.addEventListener('click', function() {
-	console.log("Clic sur bouton gauche");
-});
-arrowRight.addEventListener('click', function() {
-	console.log("Clic sur bouton droit");
-});
 
 // Affichage des bullet points
+
+const classDot = document.querySelector('.dots');
 for (var i = 0; i < slides.length; i ++) {
 	const dot = document.createElement("div");
-	const classDot = document.querySelector('.dots');
 	classDot.appendChild(dot);
 	dot.classList.add("dot");
 	dot.innerHTML = "";
+	
 	if (i == 0) {
 		dot.classList.add("dot_selected");
 	}
 }
+var selectedDot = document.querySelector('.dot_selected');
+
+
+
+// Ajout des évènements sur les flèches
+
+const arrowRight = document.querySelector('.arrow_right');
+const arrowLeft = document.querySelector('.arrow_left');
+
+
+arrowRight.addEventListener('click', function() {
+	const nextDot = document.querySelector(".dot_selected").nextElementSibling;
+	selectedDot.classList.remove("dot_selected");
+	nextDot.classList.add("dot_selected");
+});
+arrowLeft.addEventListener('click', function() {
+	console.log("Clic sur bouton gauche");
+});
