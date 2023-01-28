@@ -45,12 +45,13 @@ let selectedDot = recuperationPosition(position);
 const arrowRight = document.querySelector('.arrow_right');
 const arrowLeft = document.querySelector('.arrow_left');
 
-
 arrowRight.addEventListener('click', function() {
 	changementBulletPoint(1);
+	changementImage(position);
 });
 arrowLeft.addEventListener('click', function() {
 	changementBulletPoint(-1);
+	changementImage(position);
 });
 
 
@@ -66,4 +67,9 @@ function changementBulletPoint(direction) {
 	position = position + direction;
 	selectedDot = recuperationPosition(position);
 	selectedDot.classList.add("dot_selected");
+}
+
+function changementImage(position){
+	document.querySelector(".banner-img").src = "./assets/images/slideshow/" + slides[position].image;
+	document.querySelector("#banner p").innerHTML = slides[position].tagLine;
 }
