@@ -36,7 +36,7 @@ for (let i = 0; i < slides.length; i ++) {
 
 // Récupération de la position du bullet point sélectionné
 let position = 1;
-let selectedDot = document.querySelector(`.dots .dot:nth-child(${position}`);
+let selectedDot = recuperationPosition(position);
 
 
 
@@ -55,12 +55,15 @@ arrowLeft.addEventListener('click', function() {
 
 
 
-
 // FONCTIONS
+
+function recuperationPosition(position){
+	return document.querySelector(`.dots .dot:nth-child(${position}`);
+}
 
 function changementBulletPoint(direction) {
 	selectedDot.classList.remove("dot_selected");
 	position = position + direction;
-	selectedDot = document.querySelector(`.dots .dot:nth-child(${position}`);
+	selectedDot = recuperationPosition(position);
 	selectedDot.classList.add("dot_selected");
 }
