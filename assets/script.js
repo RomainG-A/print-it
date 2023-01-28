@@ -58,22 +58,32 @@ arrowLeft.addEventListener('click', function() {
 
 
 function clicSurFleche(direction) {
-	changementImage(changementBulletPoint(direction));
+	position = position + direction;
+	testPosition();
+	changementBulletPoint(direction);
+	changementImage();
 }
 
 function recuperationPosition(position){
 	return document.querySelector(`.dots .dot:nth-child(${position + 1}`);
 }
 
-function changementBulletPoint(direction) {
-	selectedDot.classList.remove("dot_selected");
-	position = position + direction;
-	selectedDot = recuperationPosition(position);
-	selectedDot.classList.add("dot_selected");
-	return position;
+function testPosition() {
+	if (position >= slides.length) {
+		position = 0;
+	}
+	else if (position < 0) {
+		position = slides.length - 1;
+	}
 }
 
-function changementImage(position){
+function changementBulletPoint(direction) {
+	selectedDot.classList.remove("dot_selected");
+	selectedDot = recuperationPosition(position);
+	selectedDot.classList.add("dot_selected");
+}
+
+function changementImage(){
 	document.querySelector(".banner-img").src = "./assets/images/slideshow/" + slides[position].image;
 	document.querySelector("#banner p").innerHTML = slides[position].tagLine;
 }
