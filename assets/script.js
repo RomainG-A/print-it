@@ -22,17 +22,18 @@ const slides = [
 // Affichage des bullet points
 
 const classDot = document.querySelector('.dots');
-for (var i = 0; i < slides.length; i ++) {
+let position = 0;
+for (let i = 0; i < slides.length; i ++) {
 	const dot = document.createElement("div");
 	classDot.appendChild(dot);
 	dot.classList.add("dot");
 	dot.innerHTML = "";
 	
-	if (i == 0) {
+	if (i == position) {
 		dot.classList.add("dot_selected");
 	}
 }
-var selectedDot = document.querySelector('.dot_selected');
+let selectedDot = document.querySelector(`.dots .dot:nth-child(${position}`);
 
 
 
@@ -43,9 +44,11 @@ const arrowLeft = document.querySelector('.arrow_left');
 
 
 arrowRight.addEventListener('click', function() {
-	const nextDot = document.querySelector(".dot_selected").nextElementSibling;
+	//const nextDot = document.querySelector(".dot_selected").nextElementSibling;
 	selectedDot.classList.remove("dot_selected");
-	nextDot.classList.add("dot_selected");
+	position ++;
+	selectedDot = document.querySelector(`.dots .dot:nth-child(${position}`);
+	selectedDot.classList.add("dot_selected");
 });
 arrowLeft.addEventListener('click', function() {
 	console.log("Clic sur bouton gauche");
