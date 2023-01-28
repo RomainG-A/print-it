@@ -22,17 +22,20 @@ const slides = [
 // Affichage des bullet points
 
 const classDot = document.querySelector('.dots');
-let position = 0;
+
 for (let i = 0; i < slides.length; i ++) {
 	const dot = document.createElement("div");
 	classDot.appendChild(dot);
 	dot.classList.add("dot");
 	dot.innerHTML = "";
-	
-	if (i == position) {
+	// On affiche le premier point comme étant sélectionné par défaut à l'ouverture de la page
+	if (i == 0) {
 		dot.classList.add("dot_selected");
 	}
 }
+
+// Récupération de la position du bullet point sélectionné
+let position = 1;
 let selectedDot = document.querySelector(`.dots .dot:nth-child(${position}`);
 
 
@@ -44,12 +47,20 @@ const arrowLeft = document.querySelector('.arrow_left');
 
 
 arrowRight.addEventListener('click', function() {
-	//const nextDot = document.querySelector(".dot_selected").nextElementSibling;
-	selectedDot.classList.remove("dot_selected");
-	position ++;
-	selectedDot = document.querySelector(`.dots .dot:nth-child(${position}`);
-	selectedDot.classList.add("dot_selected");
+	changementBulletPoint(1);
 });
 arrowLeft.addEventListener('click', function() {
-	console.log("Clic sur bouton gauche");
+	changementBulletPoint(-1);
 });
+
+
+
+
+// FONCTIONS
+
+function changementBulletPoint(direction) {
+	selectedDot.classList.remove("dot_selected");
+	position = position + direction;
+	selectedDot = document.querySelector(`.dots .dot:nth-child(${position}`);
+	selectedDot.classList.add("dot_selected");
+}
