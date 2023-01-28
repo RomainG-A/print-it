@@ -27,3 +27,15 @@ arrowLeft.addEventListener('click', function() {
 arrowRight.addEventListener('click', function() {
 	console.log("Clic sur bouton droit");
 });
+
+// Affichage des bullet points
+for (var i = 0; i < slides.length; i ++) {
+	const dot = document.createElement("div");
+	const classDot = document.querySelector('.dots');
+	classDot.appendChild(dot);
+	dot.classList.add("dot");
+	dot.innerHTML = "";
+	if (i == 0) {
+		dot.classList.add("dot_selected");
+	}
+}
