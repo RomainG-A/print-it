@@ -46,17 +46,20 @@ const arrowRight = document.querySelector('.arrow_right');
 const arrowLeft = document.querySelector('.arrow_left');
 
 arrowRight.addEventListener('click', function() {
-	changementBulletPoint(1);
-	changementImage(position);
+	clicSurFleche(1);
 });
 arrowLeft.addEventListener('click', function() {
-	changementBulletPoint(-1);
-	changementImage(position);
+	clicSurFleche(-1);
 });
 
 
 
 // FONCTIONS
+
+
+function clicSurFleche(direction) {
+	changementImage(changementBulletPoint(direction));
+}
 
 function recuperationPosition(position){
 	return document.querySelector(`.dots .dot:nth-child(${position + 1}`);
@@ -67,6 +70,7 @@ function changementBulletPoint(direction) {
 	position = position + direction;
 	selectedDot = recuperationPosition(position);
 	selectedDot.classList.add("dot_selected");
+	return position;
 }
 
 function changementImage(position){
