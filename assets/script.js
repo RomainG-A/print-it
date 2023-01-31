@@ -27,7 +27,6 @@ for (let i = 0; i < slides.length; i ++) {
 	const dot = document.createElement("div");
 	classDot.appendChild(dot);
 	dot.classList.add("dot");
-	dot.innerHTML = "";
 	// On affiche le premier point comme étant sélectionné par défaut à l'ouverture de la page
 	if (i == 0) {
 		dot.classList.add("dot_selected");
@@ -57,15 +56,15 @@ arrowLeft.addEventListener('click', function() {
 // FONCTIONS
 
 
+function recuperationPosition(position){
+	return document.querySelector(`.dots .dot:nth-child(${position + 1}`);
+}
+
 function clicSurFleche(direction) {
 	position = position + direction;
 	testPosition();
 	changementBulletPoint(direction);
 	changementImage();
-}
-
-function recuperationPosition(position){
-	return document.querySelector(`.dots .dot:nth-child(${position + 1}`);
 }
 
 function testPosition() {
