@@ -18,8 +18,7 @@ const slides = [
 ]
 
 
-
-// Affichage des bullet points
+// Création et affichage des bullet points
 
 const classDot = document.querySelector('.dots');
 
@@ -27,16 +26,13 @@ for (let i = 0; i < slides.length; i ++) {
 	const dot = document.createElement("div");
 	classDot.appendChild(dot);
 	dot.classList.add("dot");
-	// On affiche le premier point comme étant sélectionné par défaut à l'ouverture de la page
-	if (i == 0) {
-		dot.classList.add("dot_selected");
-	}
 }
 
-// Récupération de la position du bullet point sélectionné
-let position = 0;
-let selectedDot = recuperationPosition(position);
 
+// Récupération de la position et affichage du bullet point sélectionné
+let position = 0;
+let selectedDot = recuperationPosition();
+selectedDot.classList.add("dot_selected");
 
 
 // Ajout des évènements sur les flèches
@@ -52,11 +48,9 @@ arrowLeft.addEventListener('click', function() {
 });
 
 
-
 // FONCTIONS
 
-
-function recuperationPosition(position){
+function recuperationPosition(){
 	return document.querySelector(`.dots .dot:nth-child(${position + 1}`);
 }
 
@@ -78,7 +72,7 @@ function testPosition() {
 
 function changementBulletPoint(direction) {
 	selectedDot.classList.remove("dot_selected");
-	selectedDot = recuperationPosition(position);
+	selectedDot = recuperationPosition();
 	selectedDot.classList.add("dot_selected");
 }
 
