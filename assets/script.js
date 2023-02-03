@@ -21,7 +21,7 @@ const slides = [
 
 // Création et affichage des bullet points
 
-const classDot = document.querySelector('.dots');
+const classDot = document.querySelector(".dots");
 
 for (let i = 0; i < slides.length; i ++) {
 	const dot = document.createElement("div");
@@ -39,13 +39,13 @@ selectedDot.classList.add("dot_selected");
 
 // Ajout des évènements sur les flèches
 
-const arrowRight = document.querySelector('.arrow_right');
-const arrowLeft = document.querySelector('.arrow_left');
+const arrowRight = document.querySelector(".arrow_right");
+const arrowLeft = document.querySelector(".arrow_left");
 
-arrowRight.addEventListener('click', function() {
+arrowRight.addEventListener("click", function() {
 	clicSurFleche(1);
 });
-arrowLeft.addEventListener('click', function() {
+arrowLeft.addEventListener("click", function() {
 	clicSurFleche(-1);
 });
 
@@ -53,14 +53,14 @@ arrowLeft.addEventListener('click', function() {
 
 // FONCTIONS
 
-function recuperationPosition(){
+function recuperationPosition() {
 	return document.querySelector(`.dots .dot:nth-child(${position + 1}`);
 }
 
 function clicSurFleche(direction) {
 	position = position + direction;
 	testPosition();
-	changementBulletPoint(direction);
+	changementBulletPoint();
 	changementImage();
 }
 
@@ -73,13 +73,13 @@ function testPosition() {
 	}
 }
 
-function changementBulletPoint(direction) {
+function changementBulletPoint() {
 	selectedDot.classList.remove("dot_selected");
 	selectedDot = recuperationPosition();
 	selectedDot.classList.add("dot_selected");
 }
 
-function changementImage(){
+function changementImage() {
 	document.querySelector(".banner-img").src = "./assets/images/slideshow/" + slides[position].image;
 	document.querySelector("#banner p").innerHTML = slides[position].tagLine;
 }
