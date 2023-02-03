@@ -18,6 +18,7 @@ const slides = [
 ]
 
 
+
 // Création et affichage des bullet points
 
 const classDot = document.querySelector('.dots');
@@ -30,6 +31,7 @@ for (let i = 0; i < slides.length; i ++) {
 
 
 // Récupération de la position et affichage du bullet point sélectionné
+
 let position = 0;
 let selectedDot = recuperationPosition();
 selectedDot.classList.add("dot_selected");
@@ -46,6 +48,7 @@ arrowRight.addEventListener('click', function() {
 arrowLeft.addEventListener('click', function() {
 	clicSurFleche(-1);
 });
+
 
 
 // FONCTIONS
